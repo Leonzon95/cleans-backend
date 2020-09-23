@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2020_09_21_201745) do
     t.string "email"
     t.string "password_digest"
     t.string "phone_number"
-    t.boolean "is_client"
+    t.boolean "is_cleaner"
     t.float "rating"
     t.string "first_name"
     t.string "last_name"
