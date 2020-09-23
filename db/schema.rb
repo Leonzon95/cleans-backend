@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_23_204432) do
+ActiveRecord::Schema.define(version: 2020_09_23_210546) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 2020_09_23_204432) do
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "estimated_time"
     t.index ["address_id"], name: "index_jobs_on_address_id"
     t.index ["user_id"], name: "index_jobs_on_user_id"
   end
@@ -60,6 +61,7 @@ ActiveRecord::Schema.define(version: 2020_09_23_204432) do
     t.string "last_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "hourly_rate"
   end
 
   add_foreign_key "addresses", "users"

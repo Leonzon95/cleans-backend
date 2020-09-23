@@ -6,6 +6,7 @@ class SessionsController < ApplicationController
           render json: {
             logged_in: true,
             user: {
+              id: @user.id,
               username: @user.username,
               email: @user.email,
               firstName: @user.first_name,

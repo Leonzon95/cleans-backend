@@ -20,6 +20,7 @@ class UsersController < ApplicationController
           render json: {
             status: :created,
             user: {
+              id: @user.id,
               username: @user.username,
               email: @user.email,
               firstName: @user.first_name,
