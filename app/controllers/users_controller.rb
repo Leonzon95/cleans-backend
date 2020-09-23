@@ -19,7 +19,14 @@ class UsersController < ApplicationController
           login!
           render json: {
             status: :created,
-            user: @user
+            user: {
+              username: @user.username,
+              email: @user.email,
+              firstName: @user.first_name,
+              lastName: @user.last_name,
+              isCleaner: @user.is_cleaner,
+              phoneNumber: @user.phone_number
+            }
           }
         else 
           render json: {
@@ -32,6 +39,6 @@ class UsersController < ApplicationController
     private
 
     def user_params
-    params.require(:user).permit(:username, :email, :password, :password_confirmation, :first_name, :last_name, :phone_number)
+    params.require(:user).permit(:username, :email, :password, :password_confirmation, :first_name, :last_name, :phone_number, :is_cleaner)
     end
 end

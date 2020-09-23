@@ -5,12 +5,19 @@ class SessionsController < ApplicationController
           login!
           render json: {
             logged_in: true,
-            user: @user
+            user: {
+              username: @user.username,
+              email: @user.email,
+              firstName: @user.first_name,
+              lastName: @user.last_name,
+              isCleaner: @user.is_cleaner,
+              phoneNumber: @user.phone_number
+            }
           }
         else
           render json: { 
             status: 401,
-            errors: ['no such user', 'verify credentials and try again or signup']
+            errors: ['Your username or password is invalid']
           }
         end
     end
