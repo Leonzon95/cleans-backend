@@ -1,4 +1,9 @@
 class User < ApplicationRecord
+    has_many :adresses
+    has_many :jobs
+    has_many :applications
+    has_many :applied_jobs, through: :applications
+
     has_secure_password
 
     validates :first_name, presence: true

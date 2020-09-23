@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :applications
+  resources :jobs
+  resources :addresses
   resources :users, only: [:create, :show]
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
