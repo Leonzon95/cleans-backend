@@ -12,7 +12,7 @@ class JobsController < ApplicationController
                     hiredCleanerId: job.hired_cleaner,
                     status: 'new',
                     description: job.description,
-                    estimatedTime: estimated_time
+                    estimatedTime: job.estimated_time
                 }
             } 
         else
@@ -39,6 +39,6 @@ class JobsController < ApplicationController
     private
 
     def job_params
-        params.require(:job).permit(:date, :description, :estimated_time)
+        params.require(:job).permit(:date, :description, :estimated_time, :address_id)
     end
 end

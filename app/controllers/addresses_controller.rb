@@ -1,4 +1,6 @@
 class AddressesController < ApplicationController
+    before_action :login_required
+
     def create
         address = current_user.addresses.build(address_params)
         if address.save
@@ -18,6 +20,21 @@ class AddressesController < ApplicationController
                 errors: address.errors.full_messages
             }
         end
+    end
+
+    def index
+        addresses = current_user.addresses.map do |address|
+            {id: address.id,
+            name: address.name,
+            country: address.country,
+            state: address.state,
+            zipcode: address.zipcode,
+            city: address.city,
+            streetAddress: address.street_address}
+        end
+        render json: {
+            addresses: addresses
+        }
     end
 
     private
