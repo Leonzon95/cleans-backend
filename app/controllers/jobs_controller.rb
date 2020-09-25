@@ -30,7 +30,7 @@ class JobsController < ApplicationController
                 hiredCleanerId: job.hired_cleaner,
                 status: job.status,
                 description: job.description,
-                estimatedTime: estimated_time
+                estimatedTime: job.estimated_time
             }
         end
         render json: {jobs: jobs}
