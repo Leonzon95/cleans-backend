@@ -1,8 +1,8 @@
 class User < ApplicationRecord
-    has_many :adresses
+    has_many :addresses
     has_many :jobs
     has_many :applications
-    has_many :applied_jobs, through: :applications
+    # has_many :jobs, through: :applications, as: :applied_jobs
 
     has_secure_password
 

@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
     skip_before_action :verify_authenticity_token
-    helper_method :login!, :logged_in?, :current_user, :authorized_user?, :logout!
+    helper_method :login!, :logged_in?, :current_user, :authorized_user?, :logout!, :login_required
 
     def login!
         session[:user_id] = @user.id
@@ -20,5 +20,11 @@ class ApplicationController < ActionController::Base
 
     def logout!
         session.clear
+    end
+
+    def login_required
+        if !logged_in?
+            render json: {error: 'You must belogged in'}
+        end
     end
 end
