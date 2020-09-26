@@ -5,15 +5,7 @@ class SessionsController < ApplicationController
           login!
           render json: {
             logged_in: true,
-            user: {
-              id: @user.id,
-              username: @user.username,
-              email: @user.email,
-              firstName: @user.first_name,
-              lastName: @user.last_name,
-              isCleaner: @user.is_cleaner,
-              phoneNumber: @user.phone_number
-            }
+            user: @user.format_to_json
           }
         else
           render json: { 

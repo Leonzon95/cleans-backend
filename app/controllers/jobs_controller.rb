@@ -3,17 +3,10 @@ class JobsController < ApplicationController
 
     def create 
         job = current_user.jobs.build(job_params)
+        job.status = "new"
         if job.save
             render json: {
-                job: {
-                    id: job.id,
-                    addressId: job.address_id,
-                    date: job.date,
-                    hiredCleanerId: job.hired_cleaner,
-                    status: 'new',
-                    description: job.description,
-                    estimatedTime: job.estimated_time
-                }
+                job: job.format_to_json
             } 
         else
             render json: {
@@ -23,16 +16,7 @@ class JobsController < ApplicationController
     end
 
     def index
-        jobs = current_user.jobs.map do |job|
-            {   id: job.id,
-                addressId: job.address_id,
-                date: job.date,
-                hiredCleanerId: job.hired_cleaner,
-                status: job.status,
-                description: job.description,
-                estimatedTime: job.estimated_time
-            }
-        end
+        jobs = current_user.jobs.map { |job| job.format_to_json}
         render json: {jobs: jobs}
     end
 

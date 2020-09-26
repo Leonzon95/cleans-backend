@@ -18,4 +18,15 @@ class User < ApplicationRecord
     
 
     validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
+
+    def format_to_json
+        {  id: self.id,
+            username: self.username,
+            email: self.email,
+            firstName: self.first_name,
+            lastName: self.last_name,
+            isCleaner: self.is_cleaner,
+            phoneNumber: self.phone_number
+        }
+    end
 end
