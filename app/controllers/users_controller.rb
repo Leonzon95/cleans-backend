@@ -3,7 +3,7 @@ class UsersController < ApplicationController
         @user = User.find(params[:id])
        if @user
           render json: {
-            user: @user
+            user: @user.format_to_json
           }
         else
           render json: {
@@ -19,15 +19,7 @@ class UsersController < ApplicationController
           login!
           render json: {
             status: :created,
-            user: {
-              id: @user.id,
-              username: @user.username,
-              email: @user.email,
-              firstName: @user.first_name,
-              lastName: @user.last_name,
-              isCleaner: @user.is_cleaner,
-              phoneNumber: @user.phone_number
-            }
+            user: user: @user.format_to_json
           }
         else 
           render json: {

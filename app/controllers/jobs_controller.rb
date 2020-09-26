@@ -16,8 +16,13 @@ class JobsController < ApplicationController
     end
 
     def index
-        jobs = current_user.jobs.map { |job| job.format_to_json}
-        render json: {jobs: jobs}
+        if params[:user_id]
+            jobs = current_user.jobs.map { |job| job.format_to_json}
+            render json: {jobs: jobs}
+        else
+            jobs = Job.all.map { |job| job.format_to_json}
+            render json: {jobs: jobs}
+        end
     end
 
     private
