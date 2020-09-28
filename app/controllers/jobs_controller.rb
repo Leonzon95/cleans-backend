@@ -20,7 +20,7 @@ class JobsController < ApplicationController
             jobs = current_user.jobs.map { |job| job.format_to_json}
             render json: {jobs: jobs}
         else
-            jobs = Job.all.map { |job| job.format_to_json}
+            jobs = Job.all.map { |job| job.format_to_json_with_address}
             render json: {jobs: jobs}
         end
     end

@@ -8,4 +8,16 @@ class Address < ApplicationRecord
   validates :zipcode, presence: true
   validates :city, presence: true
   validates :street_address, presence: true
+
+
+  def format_to_json
+    { id: self.id,
+      name: self.name,
+      country: self.country,
+      state: self.state,
+      zipcode: self.zipcode,
+      city: self.city,
+      streetAddress: self.street_address
+    }
+  end
 end
