@@ -19,7 +19,7 @@ class UsersController < ApplicationController
           login!
           render json: {
             status: :created,
-            user: user: @user.format_to_json
+            user: @user.format_to_json
           }
         else 
           render json: {
@@ -29,9 +29,17 @@ class UsersController < ApplicationController
         end
       end
 
+      def update 
+        user = User.all.find_by_id(params[:id])
+        user.hourly_rate = params[:hourly_rate].to_f if params[:hourly_rate]
+        
+        user.save
+        render json: {user: current_user.format_to_json}
+      end
+
     private
 
     def user_params
-    params.require(:user).permit(:username, :email, :password, :password_confirmation, :first_name, :last_name, :phone_number, :is_cleaner)
+    params.require(:user).permit(:username, :email, :password, :password_confirmation, :first_name, :last_name, :phone_number, :is_cleaner, :hourly_rate)
     end
 end

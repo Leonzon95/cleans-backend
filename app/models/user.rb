@@ -13,7 +13,7 @@ class User < ApplicationRecord
     validates :email, presence: true
     validates :email, uniqueness: true
     validates :phone_number, presence: true
-    validates :password, length: { minimum: 6 }
+    validates :password, length: { minimum: 6 }, on: :create
    
     
 
@@ -26,7 +26,8 @@ class User < ApplicationRecord
             firstName: self.first_name,
             lastName: self.last_name,
             isCleaner: self.is_cleaner,
-            phoneNumber: self.phone_number
+            phoneNumber: self.phone_number,
+            hourlyRate: self.hourly_rate
         }
     end
 end
