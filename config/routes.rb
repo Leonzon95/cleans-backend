@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   
   resources :users, only: [:create, :show, :update] do 
     resources :applications, only: [:create, :index]
-    resources :jobs, only: [:create, :index]
+    resources :jobs, only: [:create, :index, :update]
     resources :addresses, only: [:create, :index]
   end
   post '/login', to: 'sessions#create'

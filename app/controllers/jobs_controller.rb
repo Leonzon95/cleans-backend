@@ -25,6 +25,17 @@ class JobsController < ApplicationController
         end
     end
 
+    def update
+        if params[:cleaner_id]
+            job = Job.all.find_by_id(params[:id])
+            job.hired_cleaner = params[:cleaner_id]
+            job.status = "pending"
+            job.save
+            render json: {job: job.format_to_json}
+        end
+
+    end
+
     private
 
     def job_params
