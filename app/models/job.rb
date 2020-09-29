@@ -7,7 +7,7 @@ class Job < ApplicationRecord
   def format_to_json
     { id: self.id,
       addressId: self.address_id,
-      date: self.date,
+      date: self.date.strftime("%A, %b %d at %I:%M%P"),
       hiredCleaner: self.hired_cleaner_user,
       status: self.status,
       description: self.description,
@@ -18,7 +18,7 @@ class Job < ApplicationRecord
 
   def format_to_json_with_address
     { id: self.id,
-      date: self.date,
+      date: self.date.strftime("%A, %b %d at %I:%M%P"),
       hiredCleaner: self.hired_cleaner_user,
       status: self.status,
       description: self.description,
@@ -44,7 +44,7 @@ class Job < ApplicationRecord
 
   def hired_cleaner_user
     user = User.all.find_by_id(self.hired_cleaner)
-    user.format_to_json
+    user ? user.format_to_json : nil
   end
 
 end
