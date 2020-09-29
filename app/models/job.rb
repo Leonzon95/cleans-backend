@@ -43,8 +43,8 @@ class Job < ApplicationRecord
   end
 
   def hired_cleaner_user
-    cleaner_id = self.hired_cleaner
-    User.all.find_by_id(cleaner_id)
+    user = User.all.find_by_id(self.hired_cleaner)
+    user.format_to_json
   end
 
 end

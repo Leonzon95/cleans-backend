@@ -32,6 +32,11 @@ class JobsController < ApplicationController
             job.status = "pending"
             job.save
             render json: {job: job.format_to_json}
+        elsif params[:completed]
+            job = Job.all.find_by_id(params[:id])
+            job.status = "completed"
+            job.save
+            render json: {job: job.format_to_json}
         end
 
     end
