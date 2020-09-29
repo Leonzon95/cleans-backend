@@ -19,7 +19,7 @@ class Job < ApplicationRecord
   def format_to_json_with_address
     { id: self.id,
       date: self.date.strftime("%A, %b %d at %I:%M%P"),
-      hiredCleaner: self.hired_cleaner_user,
+      hiredCleanerId: self.hired_cleaner,
       status: self.status,
       description: self.description,
       estimatedTime: self.estimated_time,
