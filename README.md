@@ -1,24 +1,56 @@
-# README
+## Cleans
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This app helps people find and hire someone to do a cleaning job and it helps people find cleaning jobs. 
 
-Things you may want to cover:
+### Prerequisites
 
-* Ruby version
+To be able to see the frontend clone the repository: [Cleans frontend](https://github.com/Leonzon95/cleans-backend)
 
-* System dependencies
+### Prerequisites
 
-* Configuration
+Ruby 2.6.1 needs to be installed
 
-* Database creation
+```
+sudo apt update
+sudo apt install ruby-full
+rvm install "ruby-2.6.1"
+rvm use 2.6.1
+```
 
-* Database initialization
+### Installing
 
-* How to run the test suite
+Clone the repository
 
-* Services (job queues, cache servers, search engines, etc.)
+```
+git clone git@github.com:Leonzon95/cleans-backend.git
+```
 
-* Deployment instructions
+Go to file
 
-* ...
+```
+cd cleans-frontend
+```
+
+Install all gems
+
+```
+bundle install
+```
+
+Start a local server
+
+```
+rails s
+```
+
+## Built With
+
+* [Rails](https://github.com/rails/rails)- DSL to help create application
+
+## Contributing
+
+Please read [CONTRIBUTING.md](https://gist.github.com/Leonzon95/4c2d49eca48762c7ce035bceb1d424c9) for details on our code of conduct, and the process for submitting pull requests to us.
+
+## License
+
+This project is licensed under the [MIT](https://opensource.org/licenses/MIT) License 
