@@ -2,7 +2,7 @@ class User < ApplicationRecord
     has_many :addresses
     has_many :jobs
     has_many :applications
-    # has_many :jobs, through: :applications, as: :applied_jobs
+    has_many :reviews
 
     has_secure_password
 
@@ -15,8 +15,6 @@ class User < ApplicationRecord
     validates :phone_number, presence: true
     validates :password, length: { minimum: 6 }, on: :create
    
-    
-
     validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
 
     def format_to_json
