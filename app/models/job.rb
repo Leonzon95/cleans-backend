@@ -1,6 +1,7 @@
 class Job < ApplicationRecord
   belongs_to :user
   belongs_to :address
+  belongs_to :review, optional: true
   has_many :applications
   has_many :users, through: :applications
 
@@ -12,7 +13,8 @@ class Job < ApplicationRecord
       status: self.status,
       description: self.description,
       estimatedTime: self.estimated_time,
-      applicants: self.format_applicants
+      applicants: self.format_applicants,
+      review: self.review ? self.review.format_to_json : nil
     }
   end
 
