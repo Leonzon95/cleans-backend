@@ -30,15 +30,7 @@ class Job < ApplicationRecord
 
   def format_applicants
     self.users.map do |applicant| 
-      {  id: applicant.id,
-            username: applicant.username,
-            email: applicant.email,
-            firstName: applicant.first_name,
-            lastName: applicant.last_name,
-            isCleaner: applicant.is_cleaner,
-            phoneNumber: applicant.phone_number,
-            hourlyRate: applicant.hourly_rate
-        }
+      applicant.format_to_json
     end
   end
 

@@ -5,7 +5,7 @@ class ReviewsController < ApplicationController
         byebug
         user = User.all.find_by_id(parmas[:user_id])
         if user.rating
-            user.rating = (params[:review][:rating].to_i + user.rating) / 2 
+            user.rating = ((params[:review][:rating].to_i + user.rating) / 2).round
         else
             user.rating = params[:review][:rating].to_i
         end
@@ -13,6 +13,11 @@ class ReviewsController < ApplicationController
             user.reviews.build(review_params)
         end
         user.save
+
+        render.json: {
+            user: user.format_to_json,
+
+        }
     end
 
     private

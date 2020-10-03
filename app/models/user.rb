@@ -25,7 +25,8 @@ class User < ApplicationRecord
             lastName: self.last_name,
             isCleaner: self.is_cleaner,
             phoneNumber: self.phone_number,
-            hourlyRate: self.hourly_rate
+            hourlyRate: self.hourly_rate,
+            rating: self.rating
         }
     end
 end
