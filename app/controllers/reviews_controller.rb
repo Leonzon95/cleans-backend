@@ -15,10 +15,25 @@ class ReviewsController < ApplicationController
             job.save
         end
         user.save
-
         render json: {
             user: user.format_to_json
         }
+    end
+
+    def index 
+        user = User.all.find_by_id(params[:user_id])
+        reviews = user.reviews.reverse
+        n = params[:fetch_time].to_i * 3
+        revs = [];
+        revs << reviews[n - 3] if !!reviews[n - 1]
+        revs << reviews[n - 2] if !!reviews[n - 2]
+        revs << reviews[n - 1] if !!reviews[n - 3]
+        sending = revs.map {|rev| rev ? rev.format_to_json : nil }
+        if sending.length != 0
+            render json: {reviews: sending}
+        else 
+            render json: {error: "No more reviews"}
+        end
     end
 
     private

@@ -5,6 +5,6 @@ class Review < ApplicationRecord
   validates :rating, presence: true
 
   def format_to_json
-    {rating: self.rating, comment: self.comment}
+    {id: self.id, rating: self.rating, comment: self.comment}
   end
 end
